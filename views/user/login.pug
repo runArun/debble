@@ -1,0 +1,25 @@
+doctype 5
+html
+    head
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        link(rel='stylesheet', href='/stylesheets/style.css')
+        link(rel='stylesheet', href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css",integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M",crossorigin="anonymous")
+    body
+        block content
+            .container
+                form(action="/login", method="post")
+                div.form-group
+                    label(for="exampleInputEmail1") Email
+                    input(type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email")
+                    small(id="emailHelp" class="form-text text-muted") We'll never share your email with anyone else.
+
+                div.form-group
+                    label(for="exampleInputPassword1") Password
+                    input(type="password" class="form-control" id="exampleInputPassword1" placeholder="Password")
+
+                div.form-check
+                    label.form-check-label
+                        input(type="checkbox" class="form-check-input")
+                        | Check me out
+
+                button(type="submit" class="btn btn-primary") Submit

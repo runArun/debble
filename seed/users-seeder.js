@@ -6,9 +6,9 @@ mongoose.connect('localhost:27017/health_assistant');
 var users = [
 
     new User({
-        email:'',
-        password:'',
-        role:''
+        email:'zl2613185@qq.com',
+        password:'zl995311562',
+        role:'customer'
     }),
 
     new User({
