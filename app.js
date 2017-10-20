@@ -5,7 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-
+var validator = require('express-validator');
 var session = require('express-session');
 // session must put in front of MongoStore.
 var MongoStore = require('connect-mongo')(session);
@@ -21,9 +21,11 @@ var app = express();
 // connect with mongodb
 mongoose.connect('localhost:27017/health_assistant', function (err) { if (!err)
     console.log('mongodb connected') });
+
+//
+require('./passport_config/passport');
+
 // view engine setup
-
-
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
@@ -43,8 +45,11 @@ app.use(session({
 }));
 app.use(flash());
 app.use(logger('dev'));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(validator());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -53,7 +58,7 @@ app.use(function (req, res, next) {
     res.locals.session = req.session;
     next();
 });
-app.use('/login', usersRoutes);
+app.use('/user', usersRoutes);
 
 //app.use('/', usersRoutes);
 

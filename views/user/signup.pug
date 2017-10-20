@@ -1,24 +1,38 @@
-div.row
-    div.col-md-4.col-md-offset-4
-        h1 Sign up
-            if hasErrors
-                div.alert alert-danger
-                    each message in messages
-                        p #{message}
+doctype 5
+html
+    head
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        link(rel='stylesheet', href='/stylesheets/style.css')
+        link(rel='stylesheet', href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css",integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M",crossorigin="anonymous")
+    body
+        block content
+            .container
 
-    form(action="/user/signup" method="post")
+                if hasErrors
+                    .alert.alert-danger
+                        each message in messages
+                            p #{message}
 
-        div.form-group
-            lable(for="email")
-            | E-mail
-            input(type="text" id="email" name="email" class="form-control")
+                form(action="/user/signup", method="post")
+                    div.form-group
+                        label(for="email") Email
+                        // for means serve the name for focus
+                        input(type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email")
+                        small(id="emailHelp" class="form-text text-muted") We'll never share your email with anyone else.
 
-         div.form-group
-            lable(for="password")
-            | Password
-            input(type="password" id="password" name="password" class="form-control")
+                    div.form-group
+                        label(for="password") Password
+                        input(type="password" class="form-control" id="password" placeholder="Password")
 
-         input(type="hidden" name="_csrf" value="{{csrfToken}}")
-         button.btn btn-primary(type="submit")
-         | Sign Up
+                    div.form-group
+                        label(for="role") Role
+                        input(type="string" class="form-control" id="role" placeholder="Role")
 
+                    //div.form-check
+                        label.form-check-label
+                            input(type="checkbox" class="form-check-input")
+                            | Check me out
+
+                    -var cs= csrfToken;
+                    input(type="hidden" name="_csrf" value= cs)
+                    button.btn.btn-primary(type="submit") Sign Up

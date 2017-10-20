@@ -1,5 +1,5 @@
 var passport = require('passport');
-var User = require('../models/user');
+var User = require('../models/users');
 var Localstrategy = require('passport-local').Strategy;
 
 passport.serializeUser(function (user,done) {
@@ -16,10 +16,12 @@ passport.deserializeUser(function (id, done) {
 passport.use('local.signup',new Localstrategy({
     usernameField: 'email',
     passwordField: 'password',
+    roleField: 'role',
     passReqToCallback: true
 },function (req,email,password,done) {
     req.checkBody('email','Invalid Email').notEmpty().isEmail();
     req.checkBody('password','Invalid Password').notEmpty().isLength({min:4});
+    req.checkBody('role','Invalid Password').notEmpty();
     var errors = req.validationErrors();
     if (errors) {
         var messages = [];
@@ -39,6 +41,7 @@ passport.use('local.signup',new Localstrategy({
         var newUser = new User();
         newUser.email    = email;
         newUser.password = newUser.encryptPassword(password);
+        newUser.role = role;
         newUser.save(function (err, result) {
             if(err){
                 return done(err);
@@ -49,9 +52,10 @@ passport.use('local.signup',new Localstrategy({
     
 }));
 
-passport.use('local.signin', new Localstrategy({
+passport.use('local.login', new Localstrategy({
     usernameField: 'email',
     passwordField: 'password',
+    //role?
     passReqToCallback: true
 },function (req,email,password,done) {
     req.checkBody('email','Invalid Email').notEmpty().isEmail();

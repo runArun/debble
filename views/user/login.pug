@@ -7,19 +7,34 @@ html
     body
         block content
             .container
-                form(action="/login", method="post")
-                div.form-group
-                    label(for="exampleInputEmail1") Email
-                    input(type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email")
-                    small(id="emailHelp" class="form-text text-muted") We'll never share your email with anyone else.
 
-                div.form-group
-                    label(for="exampleInputPassword1") Password
-                    input(type="password" class="form-control" id="exampleInputPassword1" placeholder="Password")
+                if hasErrors
+                    .alert.alert-danger
+                        each message in messages
+                            p #{message}
 
-                div.form-check
-                    label.form-check-label
-                        input(type="checkbox" class="form-check-input")
-                        | Check me out
+                form(action="/user/login", method="post")
+                    div.form-group
+                        label(for="exampleInputEmail1") Email
+                        input(type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email")
+                        small(id="emailHelp" class="form-text text-muted") We'll never share your email with anyone else.
 
-                button(type="submit" class="btn btn-primary") Submit
+                    div.form-group
+                        label(for="exampleInputPassword1") Password
+                        input(type="password" class="form-control" id="exampleInputPassword1" placeholder="Password")
+
+                    div.form-check
+                        label.form-check-label
+                            input(type="checkbox" class="form-check-input")
+                            | Check me out
+                    -var cs= csrfToken;
+                    input(type="hidden" name="_csrf" value= cs)
+
+                    button.btn.btn-primary(type="submit") Log In
+                br
+                p
+                    | Don't have an account?
+                    a(href="/user/signup")
+                        = '  '
+                        | Sign Up Instead!
+

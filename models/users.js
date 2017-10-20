@@ -16,5 +16,10 @@ userSchema.methods.validPassword = function (password) {
     return bcrypt.compareSync(password,this.password);
 };
 
+userSchema.methods.getRole = function() {
+    return this.role;
+};
+
+
 module.exports = mongoose.model('Users',userSchema);
 
