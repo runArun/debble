@@ -1,4 +1,6 @@
+
 var mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
 var Schema = mongoose.Schema;
 var bcrypt = require('bcrypt-nodejs');
 
@@ -21,5 +23,5 @@ userSchema.methods.getRole = function() {
 };
 
 
-module.exports = mongoose.model('Users',userSchema);
+module.exports = mongoose.model('User',userSchema);
 

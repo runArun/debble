@@ -1,4 +1,6 @@
+
 var mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
 var Schema = mongoose.Schema;
 
 var schema = new Schema({
@@ -8,4 +10,4 @@ var schema = new Schema({
     description: {type: String,required: true}
     });
 
-module.exports = schema('Medicine',schema);
+module.exports = mongoose.model('Medicine',schema);

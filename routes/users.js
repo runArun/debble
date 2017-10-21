@@ -7,17 +7,11 @@ var csrfProtection = csrf();
 router.use(csrfProtection);
 
 
-router.use('/',notLoggedIn ,function (req,res,next) {
-    next();
-});
-
 
 router.get('/login',function (req,res,next) {
     var messages = req.flash('error');
-    res.render('user/login',{csrfToken:req.csrfToken()});
+    res.render('user/login',{csrfToken:req.csrfToken(),messages:messages,hasErrors:messages.length > 0});
 });
-
-
 router.post('/login', passport.authenticate('local.login',{
     failureRedirect: '/user/login',
     failureFlash: true
@@ -27,9 +21,10 @@ router.post('/login', passport.authenticate('local.login',{
         req.session.oldUrl = null;
         res.redirect(req.session.oldUrl);// req操作放在res前
     } else {
-        res.redirect('/customer/index');
+        res.redirect('/user/profile');
     }
 });
+
 
 
 router.get('/signup',function (req,res,next) {
@@ -38,7 +33,7 @@ router.get('/signup',function (req,res,next) {
 });
 
 router.post('/signup', passport.authenticate('local.signup',{
-    successRedirect: '/user/login',
+    successRedirect: '/user/profile',
     failureRedirect: '/user/signup',
     failureFlash: true
 }), function (req, res, next) {
@@ -47,9 +42,17 @@ router.post('/signup', passport.authenticate('local.signup',{
         req.session.oldUrl = null;
         res.redirect(req.session.oldUrl);
     } else {
-        res.redirect('/user/login');
+        res.redirect('/user/profile');
     }
 });
+
+
+router.get('/profile', isLoggedIn,function (req,res,next) {
+
+        res.render('user/profile');
+
+});
+
 
 module.exports = router;
 

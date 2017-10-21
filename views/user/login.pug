@@ -15,15 +15,15 @@ html
 
                 form(action="/user/login", method="post")
                     div.form-group
-                        label(for="exampleInputEmail1") Email
-                        input(type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email")
+                        label(for="email") Email
+                        input(type="email" class="form-control" id="email" name='email' aria-describedby="emailHelp" placeholder="Enter email")
                         small(id="emailHelp" class="form-text text-muted") We'll never share your email with anyone else.
 
                     div.form-group
-                        label(for="exampleInputPassword1") Password
-                        input(type="password" class="form-control" id="exampleInputPassword1" placeholder="Password")
+                        label(for="Password") Password
+                        input(type="password" class="form-control" id="Password" name='password' placeholder="Password")
 
-                    div.form-check
+                    //div.form-check
                         label.form-check-label
                             input(type="checkbox" class="form-check-input")
                             | Check me out

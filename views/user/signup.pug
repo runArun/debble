@@ -17,16 +17,16 @@ html
                     div.form-group
                         label(for="email") Email
                         // for means serve the name for focus
-                        input(type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email")
+                        input(type="email" name='email' class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email")
                         small(id="emailHelp" class="form-text text-muted") We'll never share your email with anyone else.
 
                     div.form-group
                         label(for="password") Password
-                        input(type="password" class="form-control" id="password" placeholder="Password")
+                        input(type="password" name='password' class="form-control" id="password" placeholder="Password")
 
                     div.form-group
                         label(for="role") Role
-                        input(type="string" class="form-control" id="role" placeholder="Role")
+                        input(type="string" class="form-control" name='role' id="role" placeholder="Role")
 
                     //div.form-check
                         label.form-check-label

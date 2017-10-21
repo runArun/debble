@@ -9,18 +9,6 @@ var users = [
         email:'zl2613185@qq.com',
         password:'zl995311562',
         role:'customer'
-    }),
-
-    new User({
-        email:'',
-        password:'',
-        role:''
-    }),
-
-    new User({
-        email:'',
-        password:'',
-        role:''
     })
 ];
 

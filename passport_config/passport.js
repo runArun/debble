@@ -16,12 +16,14 @@ passport.deserializeUser(function (id, done) {
 passport.use('local.signup',new Localstrategy({
     usernameField: 'email',
     passwordField: 'password',
-    roleField: 'role',
+    //roleField: 'role',
     passReqToCallback: true
 },function (req,email,password,done) {
     req.checkBody('email','Invalid Email').notEmpty().isEmail();
     req.checkBody('password','Invalid Password').notEmpty().isLength({min:4});
-    req.checkBody('role','Invalid Password').notEmpty();
+    req.checkBody('role','Need A Role').notEmpty();
+    console.log(req.param('role'));
+
     var errors = req.validationErrors();
     if (errors) {
         var messages = [];
@@ -32,16 +34,21 @@ passport.use('local.signup',new Localstrategy({
     }
 
     User.findOne({'email':email},function (err, user) {
+
         if(err){
             return done(err);
         }
+
         if(user){
             return done(null,false,{message:'Email is already in use. '});
+            //return done(null,false,req.flash('loginMessage', 'error'));
+
         }
+
         var newUser = new User();
         newUser.email    = email;
         newUser.password = newUser.encryptPassword(password);
-        newUser.role = role;
+        newUser.role = req.param('role');
         newUser.save(function (err, result) {
             if(err){
                 return done(err);
@@ -49,7 +56,7 @@ passport.use('local.signup',new Localstrategy({
             return done(null,newUser);
         });
     });
-    
+
 }));
 
 passport.use('local.login', new Localstrategy({
