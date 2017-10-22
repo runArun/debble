@@ -16,6 +16,8 @@ var flash = require('connect-flash');
 
 var index = require('./routes/index');
 var usersRoutes = require('./routes/users');
+var customerRoutes = require('./routes/customer');
+
 
 var app = express();
 
@@ -66,6 +68,7 @@ app.use(function (req, res, next) {
 });
 
 app.use('/user', usersRoutes);
+app.use('/customer', customerRoutes);
 
 //app.use('/', usersRoutes);
 

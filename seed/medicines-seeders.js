@@ -8,55 +8,55 @@ mongoose.connect('localhost:27017/health_assistant');
 
 var medicines = [
     new Medicine({
-        imagePath: 'public/images/mediImg/1.jpeg',
+        imagePath: '/Users/ZL/Desktop/nodeJs/debble/public/images/mediImg/1.jpg',
         title: 'Gothic Video Game',
         description: 'pretty effective !!',
         price: 10
     }),
     new Medicine({
-        imagePath: 'public/images/mediImg/2.jpeg',
+        imagePath: 'https://resource.supercheats.com/library/2016/1478244285codinfinitewarfare.png',
         title: 'Warcraft Video Game',
         description: 'awesome  medicine !!',
         price: 20
     }),
     new Medicine({
-        imagePath: 'public/images/mediImg/3.jpeg',
+        imagePath: '/Users/ZL/Desktop/nodeJs/debble/public/images/mediImg/3.jpeg',
         title: 'Call of duty Video Game',
         description: 'one people  game !!',
         price: 40
     }),
     new Medicine({
-        imagePath: 'public/images/mediImg/4.jpeg',
+        imagePath: '/Users/ZL/Desktop/nodeJs/debble/public/images/mediImg/4.jpeg',
         title: 'mariao',
         description: 'team  game !!',
         price: 40
     }),
     new Medicine({
-        imagePath: 'public/images/mediImg/5.jpeg',
+        imagePath: '/Users/ZL/Desktop/nodeJs/debble/public/images/mediImg/5.jpeg',
         title: 'hun dou luo',
         description: 'very interesting game !!',
         price: 30
     }),
     new Medicine({
-        imagePath: 'public/images/mediImg/6.jpeg',
+        imagePath: '/Users/ZL/Desktop/nodeJs/debble/public/images/mediImg/6.jpeg',
         title: 'mariao',
         description: 'team  game !!',
         price: 40
     }),
     new Medicine({
-        imagePath: 'public/images/mediImg/7.jpeg',
+        imagePath: '/Users/ZL/Desktop/nodeJs/debble/public/images/mediImg/7.jpeg',
         title: 'mariao',
         description: 'team  game !!',
         price: 40
     }),
     new Medicine({
-        imagePath: 'public/images/mediImg/8.jpeg',
+        imagePath: '/Users/ZL/Desktop/nodeJs/debble/public/images/mediImg/8.jpeg',
         title: 'mariao',
         description: 'team  game !!',
         price: 40
     }),
     new Medicine({
-        imagePath: 'public/images/mediImg/9.jpeg',
+        imagePath: '/Users/ZL/Desktop/nodeJs/debble/public/images/mediImg/9.jpeg',
         title: 'mariao',
         description: 'team  game !!',
         price: 40

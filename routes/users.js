@@ -21,7 +21,7 @@ router.post('/login', passport.authenticate('local.login',{
         req.session.oldUrl = null;
         res.redirect(req.session.oldUrl);// req操作放在res前
     } else {
-        res.redirect('/user/profile');
+        res.redirect('/customer/index');
     }
 });
 
@@ -42,8 +42,14 @@ router.post('/signup', passport.authenticate('local.signup',{
         req.session.oldUrl = null;
         res.redirect(req.session.oldUrl);
     } else {
-        res.redirect('/user/profile');
+        res.redirect('/user/login');
     }
+});
+
+
+router.get('/logout', isLoggedIn, function (req,res,next) {
+    req.logout();
+    res.redirect('/user/login');
 });
 
 

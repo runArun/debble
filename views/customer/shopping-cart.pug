@@ -20,30 +20,16 @@ html
                         a.nav-link(href="/customer/index")
                             | Home
                             span.sr-only (current)
-
-
-                    li.nav-item.dropdown
-                        a#navbarDropdownMenuLink.nav-link.dropdown-toggle(href="#", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false")
-                            | Profile
-                        .dropdown-menu(aria-labelledby="navbarDropdownMenuLink")
-                            a.dropdown-item(href="/customer/information") Overview
-                            a.dropdown-item(href="#") Events
-                            a.dropdown-item(href="#") About
-                            a.dropdown-item(href="#") Contact
-                            a.dropdown-item(href="#") Emergency
-
-
-
+                    li.nav-item
+                        a.nav-link(href="#") Profile
+                    li.nav-item
+                        a.nav-link(href="/customer/quiz") OnlineQuiz
                     li.nav-item.dropdown
                         a#navbarDropdownMenuLink.nav-link.dropdown-toggle(href="#", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false")
                             | Available Sources
                         .dropdown-menu(aria-labelledby="navbarDropdownMenuLink")
                             a.dropdown-item(href="/customer/map") Available Hospitals
                             a.dropdown-item(href="#") Available Doctors
-
-                    li.nav-item
-                        a.nav-link(href="/customer/quiz") OnlineQuiz
-
 
                 ul.nav.navbar-nav.navbar-right
                     li
@@ -59,30 +45,35 @@ html
                 a(href='/user/logout') Log out
         br
         br
-
-
+    if products
+        .row(xmlns:button="http://www.w3.org/1999/html")
+            .col-sm-6.col-md-6.col-md-offset-3.col-sm-offset-3
+                ul.list-group
+                each medicine in products
+                    li.list-group-item
+                        span.badge {{ item.qty }}
+                        span.label.label-success.panel-title.pull-left $#{item.price}
+                        strong  &nbsp&nbsp{{ this.item.title }}
+                        .btn-group.pull-right
+                            button.btn.btn-primary.btn-xs.dropdown-toggle(type="button", data-toggle="dropdown")
+                                | Action
+                                span.caret
+                            ul#ope.dropdown-menu
+                                li
+                                    a(href="/reduce/{{this.item._id}}") Reduce by 1
+                                // _id : get from mongodb//
+                                li
+                                    a(href="/remove/{{this.item._id}}") Remove all
+                    |             {{/each}}
         .row
-            .col-sm-6.col-md-4.col-md-offset-4.col-sm-offset-3
-                #success.alert.alert-success(if noMessages hidden)
-                    #{successMsg}
+            .col-sm-6.col-md-6.col-md-offset-3.col-sm-offset-3
+                strong.panel-title Total: {{ totalPrice}}
+        hr
+        .row
+            .col-sm-6.col-md-6.col-md-offset-3.col-sm-offset-3
+                a.btn.btn-success(href="/checkout", type="button") Check Out
+    else
+        .row
+            .col-sm-6.col-md-6.col-md-offset-3.col-sm-offset-3
+                h2 No Items In Cart
 
-    each medicine in medicines
-        .row: each product in medicine
-            .col-sm-6.col-md-4
-                .thumbnail
-                    img(class='img-responsive img-thumbnail' src= product.imagePath alt="nmb")
-                    .caption
-                        h3= product.title
-                        p.description= product.description
-                            .clearfix
-                                .price.pull-left= '$' + product.price
-                                a.btn.btn-success.pull-right(href='#' role='button') Add to Shopping Cart
-        br
-        br
-
-
-    footer.container-fluid.bg-light.text-center
-        p
-            | Health Assistant Made By
-            | #{'  '}
-            a(href="/user/login") www.health_assistant.com
