@@ -49,8 +49,9 @@ html
                     li
                         a(href="/customer/shopping-cart/")
                             i.fa.fa-shopping-cart(aria-hidden="true")
-                            |  Shopping Cart
-                            //span.badge ＃{session.cart.totalQty}
+                            |  Shopping Cart #{session.cart.totalQty}
+                            |
+                            //span.badge #{session.cart.totalQty}
 
 
 
@@ -76,7 +77,7 @@ html
                         p.description= product.description
                             .clearfix
                                 .price.pull-left= '$' + product.price
-                                a.btn.btn-success.pull-right(href='#' role='button') Add to Shopping Cart
+                                a.btn.btn-success.pull-right(href="/customer/add-to-cart/product._id" role='button') Add to Shopping Cart
         br
         br
 

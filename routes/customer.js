@@ -3,11 +3,17 @@ var router = express.Router();
 var passport = require('passport');
 var csrf = require('csurf');
 var Medicine = require('../models/medicine.js')
+var Cart =  require('../models/cart');
 
 /* GET home page. */
 
 var csrfProtection = csrf();
 router.use(csrfProtection);
+
+router.use('/',function (req,res,next) {
+
+    next();
+});
 
 router.get('/index', function(req, res, next) {
     var successMsg = req.flash('success')[0];
@@ -20,7 +26,7 @@ router.get('/index', function(req, res, next) {
         for (var i = 0; i< docs.length; i += chunkSize){
             productChunks.push(docs.slice(i,i + chunkSize));
         }
-        console.log(productChunks);
+        //console.log(productChunks);
         res.render('customer/index', { medicines: productChunks,successMsg: successMsg, noMessages :!successMsg});
     });
 
@@ -56,5 +62,25 @@ router.get('/shopping-cart',function (req, res, next) {
     var cart = new Cart(req.session.cart);
     res.render('shop/shopping-cart',{products: cart.generateArray(), totalPrice: cart.totalPrice});
 });
+
+router.get('/add-to-cart/:id',function (req, res, next) {
+    var productId = req.params.id;
+    var cart = new Cart(req.session.cart ? req.session.cart : {});
+
+    Medicine.findById( productId, function (err, product) {
+        if (err) {
+            return res.redirect('/customer/index');
+        }
+
+        cart.add(product, product.id);
+        req.session.cart = cart;
+        console.log(req.session.cart);
+        res.redirect('/customer/index');
+
+    });
+
+});
+
+
 
 module.exports = router;
