@@ -31,6 +31,11 @@ router.get('/profile', function(req, res, next) {
     res.render('customer/profile');
 });
 
+router.get('/info', function(req, res, next) {
+
+    res.render('customer/info');
+});
+
 router.get('/quiz', function(req, res, next) {
 
     res.render('customer/quiz');

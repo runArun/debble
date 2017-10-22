@@ -1,0 +1,250 @@
+html
+    head
+
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css")
+        link(rel='stylesheet', href='/stylesheets/discussionboard.css')
+        link(href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css", rel="stylesheet")
+        link(rel='stylesheet', href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css",integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M",crossorigin="anonymous")
+    script(src="https://code.jquery.com/jquery-1.12.4.js", integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=", crossorigin="anonymous")
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js", integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa", crossorigin="anonymous")
+    script(src="https://code.jquery.com/jquery-3.2.1.slim.min.js", integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN", crossorigin="anonymous")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js", integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh", crossorigin="anonymous")
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js", integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ", crossorigin="anonymous")
+    script(src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js")
+
+    body
+        nav.navbar.navbar-expand-lg.navbar-light.bg-light
+
+            #navbarNavDropdown.collapse.navbar-collapse
+                ul.navbar-nav
+                    li.nav-item
+
+                        i.fa.fa-2x.fa-hand-o-left(aria-hidden="true")
+                            a(href="/doctor/index") #{' '} Back
+
+
+
+            input.btn.btn-outline-success.my-2.my-sm-0(type="checkbox", checked="", data-toggle="toggle" data-width="100" data-height="36")
+
+            if login
+            button.btn.btn-outline-success.my-2.my-sm-0(type="submit" name='logout')
+                a(href='/user/logout') Log out
+
+        .container
+            .page-header
+                h1#timeline Discussion #{' '}
+                    i.fa.fa-1x.fa-users(aria-hidden="true")
+                    | #{' '}Board
+            ul.timeline
+                li.timeline-inverted
+                    .timeline-badge.danger
+                        i.glyphicon.glyphicon-credit-card
+                    .timeline-panel
+                        form(role="form")
+                            .timeline-heading
+                                .form-group
+                                    label(for="title") title
+                                    input.form-control(type="text", placeholder="Title")
+                            .timeline-body
+                                .form-group
+                                    label(for="Text") text
+                                    textarea.form-control(placeholder="text", rows="3")
+                            .ploc-tags
+                                .pull-right
+                                    .btn-group(data-toggle="buttons")
+                                        label.btn.btn-default.btn-xs.active
+                                            input(type="checkbox", checked="")
+                                            |  alice
+                                    .btn-group(data-toggle="buttons")
+                                        label.btn.btn-primary.btn-xs
+                                            input(type="checkbox")
+                                            |  story
+                                    .btn-group(data-toggle="buttons")
+                                        label.btn.btn-success.btn-xs
+                                            input(type="checkbox")
+                                            |  blog
+                                    .btn-group(data-toggle="buttons")
+                                        label.btn.btn-danger.btn-xs
+                                            input(type="checkbox")
+                                            |  Danger
+                                    .btn-group(data-toggle="buttons")
+                                        label.btn.btn-info.btn-xs
+                                            input(type="checkbox")
+                                            |  personal
+                                    .btn-group(data-toggle="buttons")
+                                        label.btn.btn-warning.btn-xs
+                                            input(type="checkbox")
+                                            |  Warning
+                            br
+                            br
+                            button.btn.btn-success.btn-lg.btn-block(type="button") send
+                li
+                    .timeline-badge
+                        i.glyphicon.glyphicon-check
+                    .timeline-panel
+                        .timeline-heading
+                            h4.timeline-title Mussum ipsum cacilds
+                            p
+                                small.text-muted
+                                    i.glyphicon.glyphicon-time
+                                    |  11/09/2014
+                        .timeline-body
+                            p
+                                | Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.
+                            div
+                                .pull-right
+                                    span.label.label-default alice
+                                    span.label.label-primary story
+                                    span.label.label-success blog
+                                    span.label.label-info personal
+                                    span.label.label-warning Warning
+                                    span.label.label-danger Danger
+                        hr
+                        .timeline-footer
+                            div
+                                .panel.panel-default
+                                    .panel-body
+                                        ul.chat
+                                            li.left.clearfix
+                                                span.chat-img.pull-left
+                                                    img.img-circle(src="http://placehold.it/50/55C1E7/fff&text=U", alt="User Avatar")
+                                                .chat-body.clearfix
+                                                    .header
+                                                        strong.primary-font Jack Sparrow
+                                                        small.pull-right.text-muted
+                                                            span.glyphicon.glyphicon-time
+                                                            | 12 mins ago
+                                                    p
+                                                        | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                                                        | dolor, quis ullamcorper ligula sodales.
+                                            li.right.clearfix
+                                                span.chat-img.pull-right
+                                                    img.img-circle(src="http://placehold.it/50/FA6F57/fff&text=RGB", alt="User Avatar")
+                                                .chat-body.clearfix
+                                                    .header
+                                                        small.text-muted
+                                                            span.glyphicon.glyphicon-time
+                                                            | 13 mins ago
+                                                        strong.pull-right.primary-font Bhaumik Patel
+                                                    p
+                                                        | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                                                        | dolor, quis ullamcorper ligula sodales.
+                                            li.left.clearfix
+                                                span.chat-img.pull-left
+                                                    img.img-circle(src="http://placehold.it/50/55C1E7/fff&text=U", alt="User Avatar")
+                                                .chat-body.clearfix
+                                                    .header
+                                                        strong.primary-font Jack Sparrow
+                                                        small.pull-right.text-muted
+                                                            span.glyphicon.glyphicon-time
+                                                            | 14 mins ago
+                                                    p
+                                                        | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                                                        | dolor, quis ullamcorper ligula sodales.
+                                            li.right.clearfix
+                                                span.chat-img.pull-right
+                                                    img.img-circle(src="http://placehold.it/50/FA6F57/fff&text=RGB", alt="User Avatar")
+                                                .chat-body.clearfix
+                                                    .header
+                                                        small.text-muted
+                                                            span.glyphicon.glyphicon-time
+                                                            | 15 mins ago
+                                                        strong.pull-right.primary-font Bhaumik Patel
+                                                    p
+                                                        | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                                                        | dolor, quis ullamcorper ligula sodales.
+                                    .panel-footer
+                                        .input-group
+                                            input#btn-input.form-control.input-sm(type="text", placeholder="Type your message here...")
+                                            span.input-group-btn
+                                                button#btn-chat.btn.btn-warning.btn-sm
+                                                    | Send
+                li.timeline-inverted
+                    .timeline-badge.warning
+                        i.glyphicon.glyphicon-credit-card
+                    .timeline-panel
+                        .timeline-heading
+                            h4.timeline-title Mussum ipsum cacilds
+                            p
+                                small.text-muted
+                                    i.glyphicon.glyphicon-time
+                                    |  11/09/2014
+                        .timeline-body
+                            p
+                                | Suco de cevadiss, é um leite divinis, qui tem lupuliz, matis, aguis e fermentis. Interagi no mé, cursus quis, vehicula ac nisi. Aenean vel dui dui. Nullam leo erat, aliquet quis tempus a, posuere ut mi. Ut scelerisque neque et turpis posuere pulvinar pellentesque nibh ullamcorper. Pharetra in mattis molestie, volutpat elementum justo. Aenean ut ante turpis. Pellentesque laoreet mé vel lectus scelerisque interdum cursus velit auctor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ac mauris lectus, non scelerisque augue. Aenean justo massa.
+                            div
+                                .pull-right
+                                    span.label.label-default alice
+                                    span.label.label-primary story
+                                    span.label.label-success blog
+                                    span.label.label-info personal
+                                    span.label.label-warning Warning
+                                    span.label.label-danger Danger
+                        hr
+                        .timeline-footer
+                            .panel.panel-primary
+                                #accordion.panel-heading
+                                    span.label.label-danger 5
+                                    span.glyphicon.glyphicon-comment
+                                    |  Chat
+                                    .btn-group.pull-right
+                                        a.btn.btn-default.btn-xs(type="button", data-toggle="collapse", data-parent="#accordion", href="#collapseOne")
+                                            span.glyphicon.glyphicon-chevron-down
+                                #collapseOne.panel-collapse.collapse
+                                    .panel-body
+                                        ul.chat
+                                            li.left.clearfix
+                                                span.chat-img.pull-left
+                                                    img.img-circle(src="http://placehold.it/50/55C1E7/fff&text=U", alt="User Avatar")
+                                                .chat-body.clearfix
+                                                    .header
+                                                        strong.primary-font Jack Sparrow
+                                                        small.pull-right.text-muted
+                                                            span.glyphicon.glyphicon-time
+                                                            | 12 mins ago
+                                                    p
+                                                        | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                                                        | dolor, quis ullamcorper ligula sodales.
+                                            li.right.clearfix
+                                                span.chat-img.pull-right
+                                                    img.img-circle(src="http://placehold.it/50/FA6F57/fff&text=RGB", alt="User Avatar")
+                                                .chat-body.clearfix
+                                                    .header
+                                                        small.text-muted
+                                                            span.glyphicon.glyphicon-time
+                                                            | 13 mins ago
+                                                        strong.pull-right.primary-font Bhaumik Patel
+                                                    p
+                                                        | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                                                        | dolor, quis ullamcorper ligula sodales.
+                                            li.left.clearfix
+                                                span.chat-img.pull-left
+                                                    img.img-circle(src="http://placehold.it/50/55C1E7/fff&text=U", alt="User Avatar")
+                                                .chat-body.clearfix
+                                                    .header
+                                                        strong.primary-font Jack Sparrow
+                                                        small.pull-right.text-muted
+                                                            span.glyphicon.glyphicon-time
+                                                            | 14 mins ago
+                                                    p
+                                                        | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                                                        | dolor, quis ullamcorper ligula sodales.
+                                            li.right.clearfix
+                                                span.chat-img.pull-right
+                                                    img.img-circle(src="http://placehold.it/50/FA6F57/fff&text=RGB", alt="User Avatar")
+                                                .chat-body.clearfix
+                                                    .header
+                                                        small.text-muted
+                                                            span.glyphicon.glyphicon-time
+                                                            | 15 mins ago
+                                                        strong.pull-right.primary-font Bhaumik Patel
+                                                    p
+                                                        | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                                                        | dolor, quis ullamcorper ligula sodales.
+                                    .panel-footer
+                                        .input-group
+                                            input#btn-input.form-control.input-sm(type="text", placeholder="Type your message here...")
+                                            span.input-group-btn
+                                                button#btn-chat.btn.btn-warning.btn-sm
+                                                    | Send
