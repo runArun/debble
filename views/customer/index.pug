@@ -47,11 +47,10 @@ html
 
                 ul.nav.navbar-nav.navbar-right
                     li
-                        a(href="/customer/shopping-cart/")
+                        a(href="/customer/shopping-cart")
                             i.fa.fa-shopping-cart(aria-hidden="true")
-                            |  Shopping Cart #{session.cart.totalQty}
-                            |
-                            //span.badge #{session.cart.totalQty}
+                            |  Shopping Cart #{' '}
+                            span.badge.badge-dark #{session.cart.totalQty}
 
 
 
@@ -77,7 +76,8 @@ html
                         p.description= product.description
                             .clearfix
                                 .price.pull-left= '$' + product.price
-                                a.btn.btn-success.pull-right(href="/customer/add-to-cart/product._id" role='button') Add to Shopping Cart
+                                -var id = product._id;
+                                a.btn.btn-success.pull-right(href="/customer/add-to-cart/"+id role='button') Add to Shopping Cart
         br
         br
 

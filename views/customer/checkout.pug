@@ -1,0 +1,114 @@
+html
+    body
+        nav.navbar.navbar-expand-lg.navbar-light.bg-light
+
+            #navbarNavDropdown.collapse.navbar-collapse
+                ul.navbar-nav
+                    li.nav-item
+                        a.nav-link(href="/customer/index")
+                            | Home
+                            span.sr-only (current)
+
+
+                    li.nav-item.dropdown
+                        a#navbarDropdownMenuLink.nav-link.dropdown-toggle(href="#", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false")
+                            | Profile
+                        .dropdown-menu(aria-labelledby="navbarDropdownMenuLink")
+                            a.dropdown-item(href="/customer/info") Info
+                            a.dropdown-item(href="#") Events
+                            a.dropdown-item(href="#") About
+                            a.dropdown-item(href="#") Contact
+                            a.dropdown-item(href="#") Emergency
+
+
+
+                    li.nav-item.dropdown
+                        a#navbarDropdownMenuLink.nav-link.dropdown-toggle(href="#", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false")
+                            | Available Sources
+                        .dropdown-menu(aria-labelledby="navbarDropdownMenuLink")
+                            a.dropdown-item(href="/customer/map") Available Hospitals
+                            a.dropdown-item(href="#") Available Doctors
+
+                    li.nav-item
+                        a.nav-link(href="/customer/quiz") OnlineQuiz
+
+
+                ul.nav.navbar-nav.navbar-right
+                    li
+                        a(href="/customer/shopping-cart")
+                            i.fa.fa-shopping-cart(aria-hidden="true")
+                            |  Shopping Cart #{' '}
+                            span.badge.badge-dark #{session.cart.totalQty}
+
+
+
+            if login
+            button.btn.btn-outline-success.my-2.my-sm-0(type="submit" name='logout')
+                a(href='/user/logout') Log out
+        br
+        br
+
+        .container-checkout
+            .row
+                .col-sm-6.col-md-6.col-md-offset-3.col-sm-offset-3
+                    .panel.panel-default
+                        .panel-heading
+                            h3.panel-title
+                                | Payment Details
+                            .checkbox.pull-right
+                                label
+                                    input(type="checkbox")
+                                    |                             Remember
+                        .panel-body
+                            form#checkout-form(action="/checkout", method="post")
+                                .form-group
+                                    label(for="cardNumber")
+                                        | CARD NUMBER
+                                    .input-group
+                                        input#cardNumber.form-control(type="text", placeholder="Valid Card Number", required="", autofocus="")
+                                        span.input-group-addon
+                                            span.glyphicon.glyphicon-lock
+                                .form-group
+                                    label(for="cardHolder")
+                                        | CARD HOLDER
+                                    .input-group
+                                        input#cardHolder.form-control.input-group(type="text", placeholder="Card Holder", required="", autofocus="", name="name")
+                                        span.input-group-addon
+                                            span.glyphicon.glyphicon-lock
+                                .form-group
+                                    label(for="address")
+                                        | ADDRESS
+                                    .input-group
+                                        input#address.form-control.input-group(type="text", placeholder="ADDRESS", required="", autofocus="", name="address")
+                                        span.input-group-addon
+                                            span.glyphicon.glyphicon-lock
+                                .row
+                                    .col-xs-7.col-md-7
+                                        .form-group
+                                            div
+                                                label(for="expityMonth")
+                                                    | EXPIRY DATE
+                                            .col-xs-6.col-lg-6.pl-ziro
+                                                input#expiryMonth.form-control(type="text", placeholder="MM", required="")
+                                            .col-xs-6.col-lg-6.pl-ziro
+                                                input#expiryYear.form-control(type="text", placeholder="YY", required="")
+                                    .col-xs-5.col-md-5.pull-right
+                                        .form-group
+                                            label(for="cvCode")
+                                                | CV CODE
+                                            input#cvCode.form-control(type="password", placeholder="CV", required="")
+                                ul.nav.nav-pills.nav-stacked
+                                    li.active
+                                        a(href="#")
+                                            span.badge.pull-right
+                                                span.glyphicon.glyphicon-usd #{total}
+
+                                            | Final Payment
+                                br
+
+                                #charge-error.alert.alert-danger.if(noError===true class= hidden : '')
+                                    | #{errMsg}
+                                button.btn.btn-success.btn-lg.btn-block(type="submit") Pay
+        script(type="text/javascript", src="https://js.stripe.com/v2/")
+        script(type="text/javascript", src="https://js.stripe.com/v3/")
+        script(type="text/javascript", src="javascript/checkout.js")

@@ -33,10 +33,13 @@ html
 
                 ul.nav.navbar-nav.navbar-right
                     li
-                        a(href="/customer/shopping-cart/")
+                        a(href="/customer/shopping-cart")
                             i.fa.fa-shopping-cart(aria-hidden="true")
-                            |  Shopping Cart
-                            //span.badge ＃{session.cart.totalQty}
+                            |  Shopping Cart #{' '}
+                            span.badge.badge-dark #{session.cart.totalQty}
+
+
+
 
 
 
@@ -45,33 +48,35 @@ html
                 a(href='/user/logout') Log out
         br
         br
-    if products
+    if products.length>0
         .row(xmlns:button="http://www.w3.org/1999/html")
             .col-sm-6.col-md-6.col-md-offset-3.col-sm-offset-3
                 ul.list-group
-                each medicine in products
+                each product in products
                     li.list-group-item
-                        span.badge {{ item.qty }}
-                        span.label.label-success.panel-title.pull-left $#{item.price}
-                        strong  &nbsp&nbsp{{ this.item.title }}
+                        span.badge.badge-dark.pull-right #{ product.qty }
+                        span.label.label-success.panel-title.pull-left #{product.price}
+                        strong  #{ product.item.title }
                         .btn-group.pull-right
                             button.btn.btn-primary.btn-xs.dropdown-toggle(type="button", data-toggle="dropdown")
                                 | Action
                                 span.caret
                             ul#ope.dropdown-menu
+                                - var id = product.item._id;
                                 li
-                                    a(href="/reduce/{{this.item._id}}") Reduce by 1
+
+                                    a(href="/customer/reduce/"+id) Reduce by 1
                                 // _id : get from mongodb//
                                 li
-                                    a(href="/remove/{{this.item._id}}") Remove all
-                    |             {{/each}}
+                                    a(href="/customer/remove/"+id) Remove all
+                    |
         .row
             .col-sm-6.col-md-6.col-md-offset-3.col-sm-offset-3
-                strong.panel-title Total: {{ totalPrice}}
+                strong.panel-title Total: #{ totalPrice }
         hr
         .row
             .col-sm-6.col-md-6.col-md-offset-3.col-sm-offset-3
-                a.btn.btn-success(href="/checkout", type="button") Check Out
+                a.btn.btn-success(href="/customer/checkout", type="button") Check Out
     else
         .row
             .col-sm-6.col-md-6.col-md-offset-3.col-sm-offset-3

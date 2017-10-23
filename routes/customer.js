@@ -2,8 +2,10 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 var csrf = require('csurf');
+
 var Medicine = require('../models/medicine.js')
 var Cart =  require('../models/cart');
+var Order = require('../models/order');
 
 /* GET home page. */
 
@@ -11,7 +13,7 @@ var csrfProtection = csrf();
 router.use(csrfProtection);
 
 router.use('/',function (req,res,next) {
-
+    req.session.cart = new Cart(req.session.cart ? req.session.cart : {});
     next();
 });
 
@@ -55,24 +57,24 @@ router.get('/map', function(req, res, next) {
 
 
 router.get('/shopping-cart',function (req, res, next) {
+    console.log(req.session);
     if (!req.session.cart){
-        return res.render('shop/shopping-cart',{products:null});
+        return res.render('customer/shopping-cart',{products:null});
     }
 
     var cart = new Cart(req.session.cart);
-    res.render('shop/shopping-cart',{products: cart.generateArray(), totalPrice: cart.totalPrice});
+    res.render('customer/shopping-cart',{products: cart.generateArray(), totalPrice: cart.totalPrice});
 });
 
 router.get('/add-to-cart/:id',function (req, res, next) {
     var productId = req.params.id;
     var cart = new Cart(req.session.cart ? req.session.cart : {});
-
-    Medicine.findById( productId, function (err, product) {
+    Medicine.findById( productId, function (err, medicine) {
         if (err) {
-            return res.redirect('/customer/index');
+            return res.redirect('/user/login');
         }
 
-        cart.add(product, product.id);
+        cart.add(medicine, medicine.id);
         req.session.cart = cart;
         console.log(req.session.cart);
         res.redirect('/customer/index');
@@ -80,6 +82,25 @@ router.get('/add-to-cart/:id',function (req, res, next) {
     });
 
 });
+
+router.get('/reduce/:id',function (req, res, next) {
+    var productId = req.params.id;
+    var cart = new Cart(req.session.cart ? req.session.cart : {});
+
+    cart.reduceByOne(productId);
+    req.session.cart = cart;
+    res.redirect('/customer/shopping-cart');
+});
+
+router.get('/remove/:id',function (req, res, next) {
+    var productId = req.params.id;
+    var cart = new Cart(req.session.cart ? req.session.cart : {});
+
+    cart.removeItem(productId);
+    req.session.cart = cart;
+    res.redirect('/customer/shopping-cart');
+});
+
 
 
 
