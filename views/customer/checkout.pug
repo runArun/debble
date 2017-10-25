@@ -1,4 +1,15 @@
 html
+    head
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css")
+        link(rel='stylesheet', href='/stylesheets/style.css')
+        link(rel='stylesheet', href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css",integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M",crossorigin="anonymous")
+    script(src="https://code.jquery.com/jquery-1.12.4.js", integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=", crossorigin="anonymous")
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js", integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa", crossorigin="anonymous")
+    script(src="https://code.jquery.com/jquery-3.2.1.slim.min.js", integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN", crossorigin="anonymous")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js", integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh", crossorigin="anonymous")
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js", integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ", crossorigin="anonymous")
+
     body
         nav.navbar.navbar-expand-lg.navbar-light.bg-light
 
@@ -106,9 +117,9 @@ html
                                             | Final Payment
                                 br
 
-                                #charge-error.alert.alert-danger.if(noError===true class= hidden : '')
+                                #charge-error.alert.alert-danger(class=noError?'hidden' : '')
                                     | #{errMsg}
                                 button.btn.btn-success.btn-lg.btn-block(type="submit") Pay
         script(type="text/javascript", src="https://js.stripe.com/v2/")
         script(type="text/javascript", src="https://js.stripe.com/v3/")
-        script(type="text/javascript", src="javascript/checkout.js")
+        script(type="text/javascript", src="javascripts/checkout.js")

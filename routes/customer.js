@@ -103,5 +103,69 @@ router.get('/remove/:id',function (req, res, next) {
 
 
 
+router.get('/checkout', isLoggedIn, function (req, res, next) {
+    if (!req.session.cart){
+        return res.redirect('/customer/shopping-cart');
+    }
+    var cart = new Cart(req.session.cart);
+    var errMsg = req.flash('error')[0];
+    res.render('customer/checkout',{total:cart.totalPrice, errMsg: errMsg, noError:!errMsg});
+});
+
+router.post('/checkout', isLoggedIn, function (req, res, next) {
+
+    if (!req.session.cart){
+        return res.redirect('/customer/shopping-cart');
+    }
+    var cart = new Cart(req.session.cart);
+
+    var stripe = require("stripe")(
+        "sk_test_2lepNuJln0Eme2UcwR938izq"
+    );
+
+    stripe.charges.create({
+        amount: cart.totalPrice * 100,
+        currency: "aud",
+        // source: req.body.stripeToken, // obtained with Stripe.js
+        //上面这句话仍旧是正确的 只是因为版本过时没有正确产生token
+        source: "tok_visa",
+        description: "Charge for test"
+    }, function(err, charge) {
+        // asynchronously called
+        if(err) {
+            req.flash('error',err.message);
+            return res.redirect('/customer/checkout');
+        }
+        var order = new Order({
+            user: req.user,
+            cart: cart,
+            address: req.body.address,
+            name: req.body.name,
+            paymentId: charge.id
+        });
+        order.save(function (err, result) {
+            if (err){}
+            req.flash('success','Successfully bought product!');
+            req.cart = null;
+            res.redirect('/customer/index');
+        });
+
+    });
+});
+
+
+
+
+
+
 
 module.exports = router;
+
+
+function isLoggedIn(req,res,next) {
+    if(req.isAuthenticated()){
+        return next();
+    }
+    req.session.oldUrl = req.url;
+    res.redirect('/user/login');
+}
