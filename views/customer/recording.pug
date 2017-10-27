@@ -1,0 +1,32 @@
+doctype html
+html
+    include header
+    include nav
+
+    body
+        .row
+            .col-md-8.col-md-offset-2
+                h1 User Profile
+                hr
+                h2 My Orders
+                    each order in orders
+                        .panel.panel-default
+                            .panel-body
+                                ul.list-group
+                                    each item in order.items
+                                        li.list-group-item
+                                        span.badge #{item.price}
+                                            |   #{ item.item.title } | #{ item.qty }
+                            .panel-footer
+                                strong Total Price: $#{ order.cart.totalPrice }
+
+
+    include footer
+
+
+
+
+
+
+
+

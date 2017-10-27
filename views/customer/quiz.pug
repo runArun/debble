@@ -1,82 +1,50 @@
-doctype 5
+doctype html
 html
-    head
-        meta(name='viewport', content='width=device-width, initial-scale=1')
-        link(rel='stylesheet', href='/stylesheets/style.css')
-        link(rel='stylesheet', href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css",integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M",crossorigin="anonymous")
-    script(src="https://code.jquery.com/jquery-1.12.4.js", integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=", crossorigin="anonymous")
-    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js", integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa", crossorigin="anonymous")
-    script(src="https://code.jquery.com/jquery-3.2.1.slim.min.js", integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN", crossorigin="anonymous")
-    script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js", integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh", crossorigin="anonymous")
-    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js", integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ", crossorigin="anonymous")
-
+    include header
+    link(rel='stylesheet', href='/stylesheets/quiz.css')
+    script(type="text/javascript", src="/javascripts/quiz.js")
+    include nav
     body
-        nav.navbar.navbar-expand-lg.navbar-light.bg-light
+    .bg-info
+        .modal-dialog
+            .modal-content
+                .modal-header
+                    h3
+                        span#qid.label.label-warning 2
+                        |  THREE is CORRECT
+                .modal-body
+                    .col-xs-3.col-xs-offset-5
+                        #loadbar(style="display: none;")
+                            #rotateG_01.blockG
+                            #rotateG_02.blockG
+                            #rotateG_03.blockG
+                            #rotateG_04.blockG
+                            #rotateG_05.blockG
+                            #rotateG_06.blockG
+                            #rotateG_07.blockG
+                            #rotateG_08.blockG
+                    #quiz.quiz(data-toggle="buttons")
+                        label.element-animation1.btn.btn-lg.btn-primary.btn-block
+                            span.btn-label
+                                i.glyphicon.glyphicon-chevron-right
+                            input(type="radio", name="q_answer", value="1")
+                            | 1 One
+                        label.element-animation2.btn.btn-lg.btn-primary.btn-block
+                            span.btn-label
+                                i.glyphicon.glyphicon-chevron-right
+                            input(type="radio", name="q_answer", value="2")
+                            | 2 Two
+                        label.element-animation3.btn.btn-lg.btn-primary.btn-block
+                            span.btn-label
+                                i.glyphicon.glyphicon-chevron-right
+                            input(type="radio", name="q_answer", value="3")
+                            | 3 Three
+                        label.element-animation4.btn.btn-lg.btn-primary.btn-block
+                            span.btn-label
+                                i.glyphicon.glyphicon-chevron-right
+                            input(type="radio", name="q_answer", value="4")
+                            | 4 Four
+                .modal-footer.text-muted
+                    span#answer
 
-            #navbarNavDropdown.collapse.navbar-collapse
-                ul.navbar-nav
-                    li.nav-item
-                        a.nav-link(href="/customer/index")
-                            | Home
-                            span.sr-only (current)
-                    li.nav-item
-                        a.nav-link(href="#") Profile
-                    li.nav-item
-                        a.nav-link(href="/customer/quiz") OnlineQuiz
-                    li.nav-item.dropdown
-                        a#navbarDropdownMenuLink.nav-link.dropdown-toggle(href="#", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false")
-                            | Available Sources
-                        .dropdown-menu(aria-labelledby="navbarDropdownMenuLink")
-                            a.dropdown-item(href="/customer/map") Available Hospitals
-                            a.dropdown-item(href="#") Available Doctors
-
-
-
-
-            if login
-            button.btn.btn-outline-success.my-2.my-sm-0(type="submit" name='logout')
-                a(href='/user/logout') Log out
-        br
-        br
-
-        .container-fluid.bg-info
-            .modal-dialog
-                .modal-content
-                    .modal-header
-                        h3
-                            span#qid.label.label-warning 2
-                            |  THREE is CORRECT
-                    .modal-body
-                        .col-xs-3.col-xs-offset-5
-                            #loadbar(style="display: none;")
-                                #rotateG_01.blockG
-                                #rotateG_02.blockG
-                                #rotateG_03.blockG
-                                #rotateG_04.blockG
-                                #rotateG_05.blockG
-                                #rotateG_06.blockG
-                                #rotateG_07.blockG
-                                #rotateG_08.blockG
-                        #quiz.quiz(data-toggle="buttons")
-                            label.element-animation1.btn.btn-lg.btn-primary.btn-block
-                                span.btn-label
-                                    i.glyphicon.glyphicon-chevron-right
-                                input(type="radio", name="q_answer", value="1")
-                                | 1 One
-                            label.element-animation2.btn.btn-lg.btn-primary.btn-block
-                                span.btn-label
-                                    i.glyphicon.glyphicon-chevron-right
-                                input(type="radio", name="q_answer", value="2")
-                                | 2 Two
-                            label.element-animation3.btn.btn-lg.btn-primary.btn-block
-                                span.btn-label
-                                    i.glyphicon.glyphicon-chevron-right
-                                input(type="radio", name="q_answer", value="3")
-                                | 3 Three
-                            label.element-animation4.btn.btn-lg.btn-primary.btn-block
-                                span.btn-label
-                                    i.glyphicon.glyphicon-chevron-right
-                                input(type="radio", name="q_answer", value="4")
-                                | 4 Four
-                    .modal-footer.text-muted
-                        span#answer
+    include footer

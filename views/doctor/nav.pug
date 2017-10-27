@@ -1,0 +1,42 @@
+nav.navbar.navbar-expand-lg.navbar-light.bg-light
+
+    #navbarNavDropdown.collapse.navbar-collapse
+        ul.navbar-nav
+            li.nav-item
+                a.nav-link(href="/doctor/index")
+                    | Home
+                    span.sr-only (current)
+
+
+            li.nav-item.dropdown
+                a#navbarDropdownMenuLink.nav-link.dropdown-toggle(href="#", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false")
+                    | User
+                .dropdown-menu(aria-labelledby="navbarDropdownMenuLink")
+                    a.dropdown-item(href="/customer/information") Overview
+                    a.dropdown-item(href="#") About
+                    a.dropdown-item(href="#") Contact
+                    a.dropdown-item(href="#") Emergency
+
+
+            li.nav-item
+                a.nav-link(href="/doctor/addquiz") Add Quiz
+
+            li.nav-item
+                a.nav-link(href="/doctor/addevent") Add Event
+            li.nav-item
+                a.nav-link(href="/doctor/discussion") Discussion Board
+
+
+
+
+
+    input.btn.btn-outline-success.my-2.my-sm-0(type="checkbox", checked="", data-toggle="toggle" data-width="100" data-height="36")
+
+    if login
+    button.btn.btn-outline-success.my-2.my-sm-0(type="submit" name='logout')
+        a(href='/user/logout') Log out
+
+
+
+
+

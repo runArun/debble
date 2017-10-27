@@ -1,8 +1,10 @@
 
 var mongoose = require('mongoose');
-mongoose.Promise = global.Promise;
+
 var schema = new mongoose.Schema({
     questions : {type: String, required : true},
-    Author : String,
-    creatTime : Date
+    answers : [String],
+    correctAnswer : {type: Number,required: true}
 });
+
+module.exports = mongoose.model('quiz',schema);

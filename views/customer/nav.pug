@@ -1,0 +1,46 @@
+nav.navbar.navbar-expand-lg.navbar-light.bg-light
+
+    #navbarNavDropdown.collapse.navbar-collapse
+        ul.navbar-nav
+            li.nav-item
+                a.nav-link(href="/customer/index")
+                    | Home
+                    span.sr-only (current)
+
+
+            li.nav-item.dropdown
+                a#navbarDropdownMenuLink.nav-link.dropdown-toggle(href="#", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false")
+                    | Profile
+                .dropdown-menu(aria-labelledby="navbarDropdownMenuLink")
+                    a.dropdown-item(href="/customer/info") Info
+                    a.dropdown-item(href="#") Events
+                    a.dropdown-item(href="#") About
+                    a.dropdown-item(href="/customer/contact") Contact
+                    a.dropdown-item(href="/customer/emergency") Emergency
+
+
+
+            li.nav-item.dropdown
+                a#navbarDropdownMenuLink.nav-link.dropdown-toggle(href="#", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false")
+                    | Available Sources
+                .dropdown-menu(aria-labelledby="navbarDropdownMenuLink")
+                    a.dropdown-item(href="/customer/recording") medical tips recording
+                    a.dropdown-item(href="/customer/map") Available Hospitals
+                    a.dropdown-item(href="#") Available Doctors
+
+            li.nav-item
+                a.nav-link(href="/customer/quiz") OnlineQuiz
+
+
+        ul.nav.navbar-nav.navbar-right
+            li
+                a(href="/customer/shopping-cart")
+                    i.fa.fa-shopping-cart(aria-hidden="true")
+                    |  Shopping Cart #{' '}
+                    span.badge.badge-dark #{session.cart.totalQty}
+
+
+
+    if login
+    button.btn.btn-outline-success.my-2.my-sm-0(type="submit" name='logout')
+        a(href='/user/logout') Log out

@@ -1,0 +1,32 @@
+doctype html
+html
+    include header
+    include nav
+
+    body
+        br
+        br
+        .container
+            .row
+                .col-md-2
+                .col-md-8
+                    form(role='form')
+                        .form-group
+                            label(for='qst') Event Title:
+                            input#qst.form-control(type='string')
+                        .form-group
+                            label(for='message') Event Description:
+                            br
+                            textarea#message(rows='10', cols='88') Please add the detailed description of oncoming events.
+
+
+                        .form-group
+                            label(for='a2') Publisher:
+                            input#a2.form-control(type='string')
+
+
+                        br
+                        button.success.btn.btn-default(type='submit') Submit
+        br
+
+    include footer

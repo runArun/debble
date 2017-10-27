@@ -34,14 +34,38 @@ router.get('/index', function(req, res, next) {
 
 });
 
-router.get('/profile', function(req, res, next) {
+router.get('/recording', function(req, res, next) {
 
-    res.render('customer/profile');
+    res.render('customer/recording');
+});
+
+router.get('/profile', isLoggedIn,function (req,res,next) {
+    Order.find({user: req.user}, function (err, orders) {
+        if (err){
+            return res.write('Error !');
+        }
+        var cart;
+        orders.forEach(function (order) {
+            cart = new Cart(order.cart);
+            order.items = cart.generateArray();
+        });
+        res.render('customer/recording',{orders: orders});
+    }); //mongoose can find id
 });
 
 router.get('/info', function(req, res, next) {
 
     res.render('customer/info');
+});
+
+router.get('/contact', function(req, res, next) {
+
+    res.render('customer/contact');
+});
+
+router.get('/emergency', function(req, res, next) {
+
+    res.render('onlinechat/io');
 });
 
 router.get('/quiz', function(req, res, next) {

@@ -1,65 +1,8 @@
-doctype 5
+doctype html
 html
-    head
-
-        meta(name='viewport', content='width=device-width, initial-scale=1')
-        link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css")
-        link(rel='stylesheet', href='/stylesheets/style.css')
-        link(href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css", rel="stylesheet")
-        link(rel='stylesheet', href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css",integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M",crossorigin="anonymous")
-    script(src="https://code.jquery.com/jquery-1.12.4.js", integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=", crossorigin="anonymous")
-    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js", integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa", crossorigin="anonymous")
-    script(src="https://code.jquery.com/jquery-3.2.1.slim.min.js", integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN", crossorigin="anonymous")
-    script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js", integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh", crossorigin="anonymous")
-    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js", integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ", crossorigin="anonymous")
-    script(src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js")
+    include header
+    include nav
 
     body
-        nav.navbar.navbar-expand-lg.navbar-light.bg-light
 
-            #navbarNavDropdown.collapse.navbar-collapse
-                ul.navbar-nav
-                    li.nav-item
-                        a.nav-link(href="/customer/index")
-                            | Home
-                            span.sr-only (current)
-
-
-                    li.nav-item.dropdown
-                        a#navbarDropdownMenuLink.nav-link.dropdown-toggle(href="#", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false")
-                            | User
-                        .dropdown-menu(aria-labelledby="navbarDropdownMenuLink")
-                            a.dropdown-item(href="/customer/information") Overview
-                            a.dropdown-item(href="#") Events
-                            a.dropdown-item(href="#") About
-                            a.dropdown-item(href="#") Contact
-                            a.dropdown-item(href="#") Emergency
-
-
-                    li.nav-item
-                        a.nav-link(href="/customer/quiz") Add Quiz
-
-                    li.nav-item
-                        a.nav-link(href="/customer/quiz") Add Event
-                    li.nav-item
-                        a.nav-link(href="/doctor/discussion") Discussion Board
-
-
-
-
-
-            input.btn.btn-outline-success.my-2.my-sm-0(type="checkbox", checked="", data-toggle="toggle" data-width="100" data-height="36")
-
-            if login
-            button.btn.btn-outline-success.my-2.my-sm-0(type="submit" name='logout')
-                a(href='/user/logout') Log out
-
-
-
-
-
-    footer.container-fluid.bg-light.text-center
-        p
-            | Health Assistant Made By
-            | #{'  '}
-            a(href="/user/login") www.health_assistant.com
+    include footer

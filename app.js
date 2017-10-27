@@ -15,6 +15,7 @@ var MongoStore = require('connect-mongo')(session);
 var flash = require('connect-flash');
 
 
+
 var index = require('./routes/index');
 var usersRoutes = require('./routes/users');
 var customerRoutes = require('./routes/customer');
@@ -26,6 +27,11 @@ var app = express();
 mongoose.Promise = global.Promise;
 mongoose.connection.openUri('mongodb://localhost:27017/health_assistant', function (err) { if (!err)
     console.log('mongodb connected') });
+
+// connect to onlinechat
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+
 
 //
 require('./passport_config/passport');
@@ -73,6 +79,11 @@ app.use('/customer', customerRoutes);
 app.use('/doctor', doctorRoutes);
 //app.use('/', usersRoutes);
 
+io.on('connection', function(socket){
+    socket.on('chat message', function(msg){
+        console.log('message: ' + msg);
+    });
+});
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
@@ -90,5 +101,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
 
 module.exports = app;
