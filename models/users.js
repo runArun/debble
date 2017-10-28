@@ -7,7 +7,19 @@ var bcrypt = require('bcrypt-nodejs');
 var userSchema = new Schema({
     email:    {type:String,required:true},
     password: {type:String,required:true},
-    role:     {type:String,required:true}
+    role:     {type:String,required:true},
+    firstname: String,
+    lastname: String,
+    phone: Number,
+    age:{type:String,min:1,max:100},
+    weight: Number,
+    height: Number,
+    blood_group: String,
+    gender: {type: String, enum: ["Male", "Female"]},
+    city: String,
+    phs: String,
+    eventsAttended: [{ type: Schema.Types.ObjectId, ref: 'Event' }]
+
 });
 
 userSchema.methods.encryptPassword = function (password) {

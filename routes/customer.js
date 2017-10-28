@@ -3,7 +3,7 @@ var router = express.Router();
 var passport = require('passport');
 var csrf = require('csurf');
 
-var Medicine = require('../models/medicine.js')
+var Medicine = require('../models/medicine.js');
 var Cart =  require('../models/cart');
 var Order = require('../models/order');
 

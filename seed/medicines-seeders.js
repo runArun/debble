@@ -8,7 +8,7 @@ mongoose.connect('localhost:27017/health_assistant');
 
 var medicines = [
     new Medicine({
-        imagePath: '/images/mediImg/1.jpg',
+        imagePath: '/images/mediImg/1.jpeg',
         title: 'Gothic Video Game',
         description: 'pretty effective !!',
         price: 10

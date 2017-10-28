@@ -24,13 +24,13 @@ var doctorRoutes = require('./routes/doctor');
 var app = express();
 
 // connect with mongodb
-mongoose.Promise = global.Promise;
+
 mongoose.connection.openUri('mongodb://localhost:27017/health_assistant', function (err) { if (!err)
     console.log('mongodb connected') });
 
 // connect to onlinechat
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
+//var server = app.listen(3000);
+//var io = require('socket.io')(server);
 
 
 //
@@ -78,12 +78,13 @@ app.use('/user', usersRoutes);
 app.use('/customer', customerRoutes);
 app.use('/doctor', doctorRoutes);
 //app.use('/', usersRoutes);
-
+/*
 io.on('connection', function(socket){
     socket.on('chat message', function(msg){
         console.log('message: ' + msg);
     });
 });
+*/
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

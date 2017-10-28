@@ -13,7 +13,26 @@ a {
 }
 
 
-/*quiz/
+.thumbnail description {
+  color: aqua;
+}
+.thumbnail {
+  margin:20%;
+}
 
- */
 
+
+price {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.panel-title {display: inline;font-weight: bold;}
+.checkbox.pull-right { margin: 40px; }
+.pl-ziro { padding-left: 0px; }
+.container-checkout{margin-top: 40px;}
+
+
+#ope {
+  background-color: beige;
+}

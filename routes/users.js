@@ -33,7 +33,7 @@ router.get('/signup',function (req,res,next) {
 });
 
 router.post('/signup', passport.authenticate('local.signup',{
-    successRedirect: '/user/profile',
+    successRedirect: '/user/login',
     failureRedirect: '/user/signup',
     failureFlash: true
 }), function (req, res, next) {
@@ -53,11 +53,6 @@ router.get('/logout', isLoggedIn, function (req,res,next) {
 });
 
 
-router.get('/profile', isLoggedIn,function (req,res,next) {
-
-        res.render('user/profile');
-
-});
 
 
 module.exports = router;

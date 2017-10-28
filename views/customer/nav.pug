@@ -14,6 +14,7 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
                 .dropdown-menu(aria-labelledby="navbarDropdownMenuLink")
                     a.dropdown-item(href="/customer/info") Info
                     a.dropdown-item(href="#") Events
+                    a.dropdown-item(href="#") Recommendation
                     a.dropdown-item(href="#") About
                     a.dropdown-item(href="/customer/contact") Contact
                     a.dropdown-item(href="/customer/emergency") Emergency
@@ -36,7 +37,7 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
             li
                 a(href="/customer/shopping-cart")
                     i.fa.fa-shopping-cart(aria-hidden="true")
-                    |  Shopping Cart #{' '}
+                    |  Shopping Cart #{'  '}
                     span.badge.badge-dark #{session.cart.totalQty}
 
 

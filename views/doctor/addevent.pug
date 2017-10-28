@@ -12,21 +12,30 @@ html
                 .col-md-8
                     form(role='form')
                         .form-group
-                            label(for='qst') Event Title:
-                            input#qst.form-control(type='string')
+                            label(for='et') Event Title:
+                            input#et.form-control(type='string')
                         .form-group
-                            label(for='message') Event Description:
+                            label(for='ct') Event Description:
                             br
-                            textarea#message(rows='10', cols='88') Please add the detailed description of oncoming events.
+                            textarea#ct(rows='5', cols='88') Please add the detailed description of upcoming events.
+
+                        .form-group
+                            label(for='ed') Event Date:
+                            input#ed.form-control(type='date')
+
+                        .form-group
+                            label(for='pd') Publish Date:
+                            input#pd.form-control(type='date')
 
 
                         .form-group
-                            label(for='a2') Publisher:
-                            input#a2.form-control(type='string')
+                            label(for='p') Publisher:
+                            input#p.form-control(type='string')
 
 
                         br
-                        button.success.btn.btn-default(type='submit') Submit
+                        div
+                            button.btn.btn-primary(type="submit") Submit
         br
 
     include footer
