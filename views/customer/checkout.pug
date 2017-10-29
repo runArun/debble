@@ -1,6 +1,10 @@
 doctype html
 html
     include header
+        script(type="text/javascript", src="https://js.stripe.com/v2/")
+        script(type="text/javascript", src="https://js.stripe.com/v3/")
+        script(type="text/javascript", src="/javascripts/checkout.js")
+
     include nav
 
     body
@@ -71,6 +75,6 @@ html
                                 button.btn.btn-success.btn-lg.btn-block(type="submit") Pay
         script(type="text/javascript", src="https://js.stripe.com/v2/")
         script(type="text/javascript", src="https://js.stripe.com/v3/")
-        script(type="text/javascript", src="javascripts/checkout.js")
+        script(type="text/javascript", src="/javascripts/checkout.js")
 
     include footer
