@@ -7,16 +7,8 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
                     | Home
                     span.sr-only (current)
 
-
-            li.nav-item.dropdown
-                a#navbarDropdownMenuLink.nav-link.dropdown-toggle(href="#", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false")
-                    | User
-                .dropdown-menu(aria-labelledby="navbarDropdownMenuLink")
-                    a.dropdown-item(href="#") Info
-                    a.dropdown-item(href="#") Emergency
-
             li.nav-item
-                a.nav-link(href="/doctor/info") Edit
+                a.nav-link(href="/doctor/info") Info
 
             li.nav-item
                 a.nav-link(href="/doctor/addquiz") Add Quiz
@@ -30,7 +22,7 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
 
 
 
-    input.btn.btn-outline-success.my-2.my-sm-0(type="checkbox", checked="", data-toggle="toggle" data-width="100" data-height="36")
+    input.btn.btn-outline-success.my-2.my-sm-0(id="toggle-event" type="checkbox", checked="", data-toggle="toggle" data-width="100" data-height="36")
 
     if login
     button.btn.btn-outline-success.my-2.my-sm-0(type="submit" name='logout')

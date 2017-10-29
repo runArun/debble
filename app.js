@@ -20,6 +20,7 @@ var index = require('./routes/index');
 var usersRoutes = require('./routes/users');
 var customerRoutes = require('./routes/customer');
 var doctorRoutes = require('./routes/doctor');
+var technicalRoutes = require('./routes/technical');
 
 var app = express();
 
@@ -77,6 +78,8 @@ app.use(function (req, res, next) {
 app.use('/user', usersRoutes);
 app.use('/customer', customerRoutes);
 app.use('/doctor', doctorRoutes);
+app.use('/technical', technicalRoutes);
+
 //app.use('/', usersRoutes);
 /*
 io.on('connection', function(socket){

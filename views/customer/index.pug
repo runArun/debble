@@ -19,7 +19,7 @@ html
                         h3= product.title
                         p.description= product.description
                         //.clearfix
-                        .price.pull-left= '$' + product.price
+                        .price.pull-left.text-primary= '$  ' + product.price
                         -var id = product._id;
                         a.btn.btn-success.pull-right(href="/customer/add-to-cart/"+id role='button') Add to Shopping Cart
 

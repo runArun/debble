@@ -4,5 +4,18 @@ html
     include nav
 
     body
+        .row
+            .col-sm-6.col-md-4.col-md-offset-4.col-sm-offset-3
 
-    include footer
+
+    each customer in customers
+        .row: each cd in customer
+
+            .col-sm-6.col-md-4.text-center
+                .caption
+                    h3= cd.firstname+'  '+cd.lastname
+                    p.description= cd.phone
+                    p.description= cd.phs
+
+
+include footer

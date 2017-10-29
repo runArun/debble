@@ -6,7 +6,8 @@ var passport = require('passport');
 var csrfProtection = csrf();
 router.use(csrfProtection);
 
-
+var user = require('../models/users.js');
+var acc = require('../models/accesscode');
 
 router.get('/login',function (req,res,next) {
     var messages = req.flash('error');
@@ -16,13 +17,41 @@ router.post('/login', passport.authenticate('local.login',{
     failureRedirect: '/user/login',
     failureFlash: true
 }),function (req, res, next) {
-    if (req.session.oldUrl) {
-        var oldUrl = req.session.oldUrl;
-        req.session.oldUrl = null;
-        res.redirect(req.session.oldUrl);// req操作放在res前
-    } else {
-        res.redirect('/customer/index');
-    }
+    user.find({email:req.body.email},{'role':1},function (err,docs) {
+
+        if(err){
+            res.redirect('/user/login');
+        }
+
+
+                if (docs[0].role==='doctor') {
+
+                    res.redirect('/doctor/index');
+
+                } else if (docs[0].role==='customer') {
+
+                    acc.findOne({'ac':req.body.ac},function (err, accode) {
+
+                        if (err) {
+                            return done(err);
+                        }
+                        if (accode) {
+                            res.redirect('/customer/index');
+                        } else {
+                            res.redirect('/user/login');
+                        }
+                    });
+
+                } else if (docs[0].role==='technical') {
+
+                    res.render('technical/index');
+                } else {
+                    res.redirect('/user/login');
+
+                }
+
+
+    });
 });
 
 
@@ -51,6 +80,8 @@ router.get('/logout', isLoggedIn, function (req,res,next) {
     req.logout();
     res.redirect('/user/login');
 });
+
+
 
 
 

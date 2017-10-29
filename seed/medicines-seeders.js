@@ -9,56 +9,56 @@ mongoose.connect('localhost:27017/health_assistant');
 var medicines = [
     new Medicine({
         imagePath: '/images/mediImg/1.jpeg',
-        title: 'Gothic Video Game',
-        description: 'pretty effective !!',
+        title: 'Hair Skin Nails',
+        description: '15% Off',
         price: 10
     }),
     new Medicine({
         imagePath: '/images/mediImg/2.jpeg',
-        title: 'Warcraft Video Game',
-        description: 'awesome  medicine !!',
+        title: 'Lecithin',
+        description: '15% Off',
         price: 20
     }),
     new Medicine({
         imagePath: '/images/mediImg/3.jpeg',
-        title: 'Call of duty Video Game',
-        description: 'one people  game !!',
+        title: 'Liver Detox',
+        description: '40% Off',
         price: 40
     }),
     new Medicine({
         imagePath: '/images/mediImg/4.jpeg',
-        title: 'mariao',
-        description: 'team  game !!',
+        title: 'Co Q10',
+        description: '30% Off',
         price: 40
     }),
     new Medicine({
         imagePath: '/images/mediImg/5.jpeg',
-        title: 'hun dou luo',
-        description: 'very interesting game !!',
+        title: 'Womens Ultivite',
+        description: '20% Off',
         price: 30
     }),
     new Medicine({
         imagePath: '/images/mediImg/6.jpeg',
-        title: 'mariao',
-        description: 'team  game !!',
+        title: 'Evening Primrose Oil + Vitamin B6',
+        description: '30% Off',
         price: 40
     }),
     new Medicine({
         imagePath: '/images/mediImg/7.jpeg',
-        title: 'mariao',
-        description: 'team  game !!',
+        title: 'MACU-Vison',
+        description: '30% Off',
         price: 40
     }),
     new Medicine({
         imagePath: '/images/mediImg/8.jpeg',
-        title: 'mariao',
-        description: 'team  game !!',
+        title: 'Fish Oil',
+        description: '10% Off' ,
         price: 40
     }),
     new Medicine({
         imagePath: '/images/mediImg/9.jpeg',
-        title: 'mariao',
-        description: 'team  game !!',
+        title: 'Prostate',
+        description: '25% Off',
         price: 40
     }),
 

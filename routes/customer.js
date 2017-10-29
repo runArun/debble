@@ -8,7 +8,7 @@ var Cart =  require('../models/cart');
 var Order = require('../models/order');
 var contact =require('../models/contact.js');
 var user = require('../models/users.js');
-
+var event = require('../models/event');
 /* GET customer pages. */
 
 //var csrfProtection = csrf();
@@ -122,6 +122,11 @@ router.get('/emergency', function(req, res, next) {
     res.render('customer/index');
 });
 
+router.get('/discussion', function(req, res, next) {
+
+    res.render('discussion/discussion');
+});
+
 router.get('/quiz', function(req, res, next) {
 
     res.render('customer/quiz');
@@ -150,6 +155,16 @@ router.get('/map', function(req, res, next) {
 });
 
 
+
+router.get('/showevent', function(req, res, next) {
+    event.find(function (err,docs) {
+
+        if(err){res.render('customer/index')};
+        console.log(docs);
+        res.render('customer/showevent', { events:docs});
+    });
+
+});
 
 router.get('/shopping-cart',function (req, res, next) {
     console.log(req.session);

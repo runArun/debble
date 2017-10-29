@@ -1,0 +1,39 @@
+doctype html
+html
+    include _header
+    include _nav_
+
+    body
+        br
+        .container
+            .row
+                .col-md-3
+                .col-md-6
+                    if messages
+                        .row
+                            .col-md-4
+                            .text-success
+                                strong #{messages}
+                    form(method='post',action='/technical/accesscode')
+                        br
+                        br
+                        br
+                        label(for='ac') Generate Access Code Below :
+                        br
+                        br
+
+                        br
+                        br
+                        br
+                        br
+                        input.col-md-12#ac(type='string' name='ac')
+                        br
+                        br
+                        br
+                        br
+                        br
+                        br
+                        br
+                        button.btn.btn-primary.pull-right(type="submit" ) Submit
+
+    include _footer

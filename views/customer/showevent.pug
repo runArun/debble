@@ -1,0 +1,27 @@
+doctype html
+html
+    include header
+    include nav
+
+    body
+        .row
+            .col-md-2
+            br
+            br
+            br
+            .col-md-8
+                table.table.table-dark.text-center.col-md-12
+                    thead
+                        tr
+                            td Title
+                            td Description
+                            td Time
+                        br
+                    tbody
+                        each event in events
+                            tr(class='')
+                                td #{event.title}
+                                td #{event.body}
+                                td #{event.ed}
+                            br
+    include footer

@@ -1,0 +1,30 @@
+nav.navbar.navbar-expand-lg.navbar-light.bg-light
+
+    #navbarNavDropdown.collapse.navbar-collapse
+        ul.navbar-nav
+            li.nav-item
+                a.nav-link(href="#")
+                    | Home
+                    span.sr-only (current)
+
+
+            li.nav-item
+                a.nav-link(href="/technical/accesscode") Access Code
+
+
+            li.nav-item
+                a.nav-link(href="/technical/discussion") Discussion Board
+
+
+
+
+
+
+    if login
+    button.btn.btn-outline-success.my-2.my-sm-0(type="submit" name='logout')
+        a(href='/user/logout') Log out
+
+
+
+
+
