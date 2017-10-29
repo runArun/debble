@@ -15,9 +15,12 @@ var userSchema = new Schema({
     weight: Number,
     height: Number,
     blood_group: String,
-    gender: {type: String, enum: ["Male", "Female"]},
+    gender: {type: String, enum: ["Male", "Female",'Other']},
+    country: String,
     city: String,
     phs: String,
+    online: Boolean,
+    imagePath :  {type: String},
     eventsAttended: [{ type: Schema.Types.ObjectId, ref: 'Event' }]
 
 });

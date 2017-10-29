@@ -9,30 +9,38 @@ html
         .container
             .row
                 .col-md-2
-                form.col-md-8.go-right(role='form')
-                    br
-                    br
+                .col-md-8
+                    if messages
+                        .row
+                            .col-md-4
+                            .text-success
+                                strong #{messages}
 
-                    h2 Please contact us
-                    br
-                    br
-                    .form-group
-                        input#name.form-control(name='name', type='text', required='')
-                        label(for='name') Your Name
-                    br
-                    br
-                    .form-group
-                        input#phone.form-control(name='phone', type='tel', required='')
-                        label(for='phone') Primary Phone
-                    br
-                    br
-                    .form-group
-                        textarea#message.form-control(name='phone', required='')
-                        label(for='message') Message
-                    br
-                    br
-                    .form-group
-                        button.btn.btn-primary(type="submit") Submit
+                    form.go-right(role='form' method='post' action='/customer/contact' class='col-md-12' id='contact')
+
+                        br
+                        br
+
+                        h2 Please contact us
+                        br
+                        br
+                        .form-group
+                            input#name.form-control(name='name', type='text', required='')
+                            label(for='name') Your Name
+                        br
+                        br
+                        .form-group
+                            input#phone.form-control(name='phone', type='tel', required='')
+                            label(for='phone') Primary Phone
+                        br
+                        br
+                        .form-group
+                            textarea#message.form-control(name='phone', required='')
+                            label(for='message') Message
+                        br
+                        br
+                        .form-group
+                            button.btn.btn-primary(type="submit") Submit
 
 
     include footer

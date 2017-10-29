@@ -1,0 +1,23 @@
+doctype html
+html
+    include header
+    include nav
+
+    body
+        .row
+            .col-sm-6.col-md-4.col-md-offset-4.col-sm-offset-3
+
+
+    each doctor in doctors
+        .row: each cd in doctor
+            .col-sm-6.col-md-4.text-center
+                .thumbnail
+                    img(class='img-responsive' src= cd.imagePath alt="whoops")
+                    .caption
+                        h3= cd.firstname+'  '+cd.lastname
+                        p.description= cd.phone
+                        //.clearfix
+                        .price.pull-left=   'age:'+'   '+cd.age
+                        .price.pull-right=   cd.city
+
+include footer

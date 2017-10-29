@@ -10,25 +10,30 @@ html
             .row
                 .col-md-2
                 .col-md-8
-                    form(role='form')
+                    if messages
+                        .row
+                            .col-md-4
+                            .text-success
+                                strong #{messages}
+                    form(role='form' method='post' action='/doctor/addevent')
                         .form-group
                             label(for='et') Event Title:
-                            input#et.form-control(type='string')
+                            input#et.form-control(type='string' name='et')
                         .form-group
                             label(for='ct') Event Description:
                             br
-                            textarea#ct(rows='5', cols='88') Please add the detailed description of upcoming events.
+                            textarea#ct(rows='8', cols='88', name='ct') Please add the detailed description of upcoming events.
 
                         .form-group
                             label(for='ed') Event Date:
-                            input#ed.form-control(type='date')
+                            input#ed.form-control(type='date' name='ed')
 
-                        .form-group
+                        //.form-group
                             label(for='pd') Publish Date:
                             input#pd.form-control(type='date')
 
 
-                        .form-group
+                        //.form-group
                             label(for='p') Publisher:
                             input#p.form-control(type='string')
 

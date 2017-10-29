@@ -6,11 +6,13 @@ var csrf = require('csurf');
 var Medicine = require('../models/medicine.js');
 var Cart =  require('../models/cart');
 var Order = require('../models/order');
+var contact =require('../models/contact.js');
+var user = require('../models/users.js');
 
-/* GET home page. */
+/* GET customer pages. */
 
-var csrfProtection = csrf();
-router.use(csrfProtection);
+//var csrfProtection = csrf();
+//router.use(csrfProtection);
 
 router.use('/',function (req,res,next) {
     req.session.cart = new Cart(req.session.cart ? req.session.cart : {});
@@ -58,20 +60,89 @@ router.get('/info', function(req, res, next) {
     res.render('customer/info');
 });
 
+router.post('/info', function(req, res, next) {
+    var conditions = {
+        _id: req.user._id
+    };
+
+    var update = {
+        $set: {
+            firstname:      req.body.fn,
+            lastname:       req.body.ln,
+            phone:          req.body.phone,
+            age:            req.body.age,
+            weight:         req.body.w,
+            height:         req.body.h,
+            blood_group:    req.body.bg,
+            gender :        req.body.gender,
+            country:        req.body.country,
+            city:           req.body.city,
+            phs:            req.body.phs
+        }
+    };
+
+    user.update(conditions, update, function(error){
+        if(error) {
+            console.log(error);
+        } else {
+            console.log('Update success!');
+        }
+    });
+
+    res.render('customer/info');
+});
+
+
 router.get('/contact', function(req, res, next) {
 
     res.render('customer/contact');
 });
 
-router.get('/emergency', function(req, res, next) {
+router.post('/contact', function(req, res, next) {
 
-    res.render('onlinechat/io');
+    var newContact = new contact({
+        name:  req.body.name,
+        phone:   req.body.phone,
+        message: req.body.message
+
+    });
+    console.log('1');
+    newContact.save(function (err) {
+        if(!err){
+            console.log('2');
+
+            req.flash('msg','successfully added !');
+            res.render('customer/contact',{ messages: req.flash('msg') });
+        };
+    });
+
+});
+
+router.get('/emergency', function(req, res, next) {
+    res.render('customer/index');
 });
 
 router.get('/quiz', function(req, res, next) {
 
     res.render('customer/quiz');
 });
+
+router.get('/availabledoctors', function(req, res, next) {
+
+    user.find({"online": true},function (err,docs) {
+
+        var productChunks = [];
+        var chunkSize = 3;
+
+        for (var i = 0; i< docs.length; i += chunkSize){
+            productChunks.push(docs.slice(i,i + chunkSize));
+        }
+        //console.log(productChunks);
+        res.render('customer/a_doctors', { doctors: productChunks});
+    });
+
+});
+
 
 router.get('/map', function(req, res, next) {
 

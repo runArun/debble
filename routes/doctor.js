@@ -2,8 +2,9 @@ var express = require('express');
 var router = express.Router();
 
 var quiz = require('../models/quizs.js');
-var event = require('../models/event');
+var event = require('../models/event.js');
 
+/* GET doctor pages. */
 
 router.get('/index', function(req, res, next) {
 
@@ -56,15 +57,14 @@ router.post('/addevent', function(req, res, next) {
     var newEvent = new event({
         title:  req.body.et,
         body:   req.body.ct,
-        date: { type: Date },
-
-        correctAnswer : req.body.ca
+        ed:   req.body.ed,
+        publisher : req.user
     });
-    newQuiz.save(function (err) {
+    newEvent.save(function (err) {
         if(!err){
 
             req.flash('msg','successfully added !');
-            res.render('doctor/addquiz',{ messages: req.flash('msg') });
+            res.render('doctor/addevent',{ messages: req.flash('msg') });
         }
     });
 
