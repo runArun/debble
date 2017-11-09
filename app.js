@@ -16,7 +16,7 @@ var flash = require('connect-flash');
 
 
 
-var index = require('./routes/index');
+var indexRoutes = require('./routes/index');
 var usersRoutes = require('./routes/users');
 var customerRoutes = require('./routes/customer');
 var doctorRoutes = require('./routes/doctor');
@@ -74,7 +74,7 @@ app.use(function (req, res, next) {
     res.locals.session = req.session;
     next();
 });
-
+app.use('/',indexRoutes);
 app.use('/user', usersRoutes);
 app.use('/customer', customerRoutes);
 app.use('/doctor', doctorRoutes);
