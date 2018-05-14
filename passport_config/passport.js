@@ -22,7 +22,6 @@ passport.use('local.signup',new Localstrategy({
     req.checkBody('email','Invalid Email').notEmpty().isEmail();
     req.checkBody('password','Invalid Password').notEmpty().isLength({min:4});
     req.checkBody('role','Need A Role').notEmpty();
-    console.log(req.param('role'));
 
     var errors = req.validationErrors();
     if (errors) {

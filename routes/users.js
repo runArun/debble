@@ -13,6 +13,7 @@ router.get('/login',function (req,res,next) {
     var messages = req.flash('error');
     res.render('user/login',{csrfToken:req.csrfToken(),messages:messages,hasErrors:messages.length > 0});
 });
+
 router.post('/login', passport.authenticate('local.login',{
     failureRedirect: '/user/login',
     failureFlash: true
